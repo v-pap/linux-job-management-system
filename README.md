@@ -37,11 +37,11 @@ Apart from having a linux system with a gcc compiler there are no other requirem
 
 1) Get a copy of the project
 ```
-git clone https://github.com/v-pap/Game-of-Life-in-parallel.git
+git clone https://github.com/v-pap/linux-job-management-system.git
 ```
 2) Go into the directory
 ```
-cd 
+cd linux-job-management-system
 ```
 3) Compile the project
 ```
