@@ -6,6 +6,9 @@ This project is an implementation of a job management system for linux (and othe
 The jms consists of two different parts: the jms_coord and the jms_console.
 * The jms_coord is responsible for managing jobs (processes). jms_coord is not managing the jobs directly, but with the help of pools, that each one handles a maximum number of jobs. These pools are created dynamicaly as needed for serving all the submited jobs. When they have served their maximum number of jobs, they get removed, after they have reported their stats. The communication between the pools and the jms_coord is done via named pipes.
 * The jms_console handles all the input/output from/to the user for submitting and checking the status of various processes. This program communicates with the jms_coord via named pools.
+
+![overview of the system](https://imgur.com/oGeA5RU.jpg)
+
 ### About the jobs output
 It should be noted that the job's outputs (stdout & stderr) are redirected to two files called
 
@@ -22,8 +25,6 @@ These files will be located on a directory with a specific name:
 * **time** time in the form of Hours:Minutes:Seconds e.g. 17:50:02
 
 Also a bash script is provided for better managing these dirs/files called ```jms_script.sh```
-
-![overview of the system](https://imgur.com/oGeA5RU.jpg)
 
 ## Getting Started
 
@@ -52,7 +53,7 @@ make
 
 In order to run the program(s) you will have to use one one of the following commands:
 
-1) For **jms_coord**
+1) **jms_coord**
 ```
 ./jms_coord -l <path> -n <jobs_pool> -w <jms_in> -r <jms_out>
 ```
@@ -61,7 +62,7 @@ In order to run the program(s) you will have to use one one of the following com
 * **jms_in** named pipe for reading data coming from the jms_console
 * **jms_out** named pipe for writing data to the jms_console
 
-2) For **jms_console**
+2) **jms_console**
 ```
 ./jms_console -w <jms_in> -r <jms_out> -o <operations_file>
 ```
@@ -69,7 +70,7 @@ In order to run the program(s) you will have to use one one of the following com
 * **jms_out** named pipe for writing data to the jms_coord
 * **operations_file** optional file which contains user commands (instead of using the stdin) 
 
-3) For **jms_script.sh**
+3) **jms_script.sh**
 ```
 ./jms_script.sh -l <path> -c <command>
 ```
